@@ -12,7 +12,7 @@ function question1 () {
   for (var i=0; i<data.length; i++){
     price += data[i].price;
   }
-  console.log(price/data.length);
+  console.log((price/data.length).toFixed(2));
   //Answer: 23.625999999999998
 }
 
@@ -22,8 +22,8 @@ function question1 () {
 function question2 () {
   var items = [];
   for (var j=0; j<data.length; j++){
-    if(data[j].price >14.00 && data[j].price <18.00){
-      items.push(data[j]);
+    if(data[j].price >=14.00 && data[j].price <=18.00){
+      items.push(data[j].title);
     }
   }
   console.log(items);
@@ -37,7 +37,7 @@ function question3 () {
   var gbp = [];
   for (var k = 0; k < data.length; k++) {
     if(data[k].currency_code=="GBP"){
-      gbp.push(data[k].title + "," + data[k].price);
+      gbp.push(data[k].title + " costs " + data[k].price + " pounds.");
     }
   }
   console.log(gbp);
@@ -51,10 +51,10 @@ function question4 () {
   for (var l = 0; l < data.length; l++) {
     for (var m = 0; m < data[l].materials.length; m++) {
     if(data[l].materials[m]=="wood"){
-      wood.push(data[l].title);
+      wood.push(data[l].title + " is made of wood.");
     }
   }
-  }console.log(wood);
+}console.log(wood);
   // Answer:
 }
 
@@ -62,12 +62,14 @@ function question4 () {
 // 5: Which items are made of eight or more materials?
 //    Display the name, number of items and the items it is made of.
 function question5 () {
-  var question5 = [];
   for (var n = 0; n < data.length; n++) {
     if(data[n].materials.length >=8){
-      question5.push(data[n].title + "," + data[n].materials.length + "," + data[n].materials);
+      console.log(data[n].title + " has " + data[n].materials.length + " materials.");
+      for (var p = 0; p < data[n].materials.length; p++) {
+      console.log("- " + data[n].materials[p]);
+      }
     }
-  }console.log(question5);
+  }
   // Answer:
 }
 
@@ -79,6 +81,6 @@ function question6 () {
     if(data[p].who_made =="i_did"){
       question6++;
     }
-  }console.log(question6);
+  }console.log(question6 + " items were made by their sellers.");
   // Answer:
 }
